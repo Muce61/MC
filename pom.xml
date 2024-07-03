@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 定义 Maven 项目对象模型(POM) -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 项目模型版本 -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 项目基本信息 -->
+    <groupId>com.mc</groupId> <!-- 项目组ID -->
+    <artifactId>mc</artifactId> <!-- 项目工件ID -->
+    <version>1.0.0</version> <!-- 项目版本 -->
+
+    <!-- 项目描述信息 -->
+    <name>mc</name> <!-- 项目名称 -->
+    <url>https://www.ruoyi.vip</url> <!-- 项目网址 -->
+    <description>若依管理系统学习</description> <!-- 项目描述 -->
+
+    <!-- 项目属性定义 -->
+    <properties>
+        <ruoyi.version>1.0.0</ruoyi.version> <!-- 系统版本 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- 源代码文件编码 -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding> <!-- 报告输出文件编码 -->
+        <java.version>1.8</java.version> <!-- Java版本 -->
+        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version> <!-- Maven Jar 插件版本 -->
+        <spring-framework.version>5.3.33</spring-framework.version> <!-- Spring Framework 版本 -->
+        <spring-security.version>5.7.12</spring-security.version> <!-- Spring Security 版本 -->
+        <druid.version>1.2.23</druid.version> <!-- Druid 数据库连接池版本 -->
+        <bitwalker.version>1.21</bitwalker.version> <!-- BitWalker UserAgentUtils 版本 -->
+        <swagger.version>3.0.0</swagger.version> <!-- Swagger 版本 -->
+        <kaptcha.version>2.3.3</kaptcha.version> <!-- KaptCha 验证码版本 -->
+        <pagehelper.boot.version>1.4.7</pagehelper.boot.version> <!-- PageHelper 分页插件版本 -->
+        <fastjson.version>2.0.43</fastjson.version> <!-- Fastjson 版本 -->
+        <oshi.version>6.6.1</oshi.version> <!-- OsHI 系统信息版本 -->
+        <commons.io.version>2.13.0</commons.io.version> <!-- Commons IO 版本 -->
+        <poi.version>4.1.2</poi.version> <!-- Apache POI 版本 -->
+        <velocity.version>2.3</velocity.version> <!-- Apache Velocity 版本 -->
+        <jwt.version>0.9.1</jwt.version> <!-- JSON Web Token 版本 -->
+    </properties>
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Framework 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>${spring-framework.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Security 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-bom</artifactId>
+                <version>${spring-security.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Boot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>2.5.15</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- 阿里数据库连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- 解析客户端操作系统、浏览器等 -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
+            </dependency>
+
+            <!-- PageHelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+
+            <!-- 获取系统信息 -->
+            <dependency>
+                <groupId>com.github.oshi</groupId>
+                <artifactId>oshi-core</artifactId>
+                <version>${oshi.version}</version>
+            </dependency>
+
+            <!-- Swagger3 依赖 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${swagger.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.swagger</groupId>
+                        <artifactId>swagger-models</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- IO 常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!-- Excel 工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!-- Velocity 代码生成使用模板 -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-engine-core</artifactId>
+                <version>${velocity.version}</version>
+            </dependency>
+
+            <!-- 阿里 JSON 解析器 -->
+            <dependency>
+                <groupId>com.alibaba.fastjson2</groupId>
+                <artifactId>fastjson2</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- Token 生成与解析 -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- 验证码 -->
+            <dependency>
+                <groupId>pro.fessional</groupId>
+                <artifactId>kaptcha</artifactId>
+                <version>${kaptcha.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 项目模块 -->
+    <modules>
+        <module>mc-admin</module> <!-- 定义子模块 -->
+    </modules>
+
+    <!-- 打包类型 -->
+    <packaging>pom</packaging>
+
+    <!-- 构建配置 -->
+    <build>
+        <plugins>
+            <!-- 编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source> <!-- 源代码版本 -->
+                    <target>${java.version}</target> <!-- 目标版本 -->
+                    <encoding>${project.build.sourceEncoding}</encoding> <!-- 文件编码 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- 远程仓库配置 -->
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliYun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!-- 插件仓库配置 -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliYun nexus</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>
